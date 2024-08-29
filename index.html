@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piadas Aleatórias</title>
+    <title>Joker's Random</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <div class="container">
-        <h1>Piadas Aleatórias</h1>
+        <h1>Joker's Random</h1>
         <button id="joke-button">Get a Joke</button>
         <div id="joke-container" class="joke-container">
-            <!-- A piada será exibida aqui -->
+
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/serviceWorker.js')
+            .then(registration => {
+              console.log('Service Worker registrado com sucesso:', registration);
+            })
+            .catch(error => {
+              console.error('Erro ao registrar o Service Worker:', error);
+            });
+        });
+      }
+    </script>
 </body>
 </html>
